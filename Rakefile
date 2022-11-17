@@ -39,7 +39,7 @@ task :relay do
         relay_tweets.each do |id, tweet|
             user = get_twitter_user(tweet["author_id"])
             link = "https://twitter.com/#{user["username"]}/status/#{tweet["id"]}"
-            text = "@#{user["username"]}\n#{tweet["text"]}\n#{link}"
+            text = "RT @#{user["username"]}: #{tweet["text"]}\n#{link}"
             puts text
             post_toot(text)
         end
