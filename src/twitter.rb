@@ -8,7 +8,8 @@ class Twitter
         # https://api.twitter.com/2/lists/:id/tweets
         url = "#{@base_url}/2/lists/#{list_id}/tweets"
         params = { "max_results" => 5, "tweet.fields" => "created_at,author_id" }
-        get(url, params, @bearer_token)["data"]
+        result = get(url, params, @bearer_token)["data"]
+        return result == nil ? [] : result
     end
 
     def get_users(ids)
